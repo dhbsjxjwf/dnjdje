@@ -1241,13 +1241,13 @@ end
 
 ------- [[ UI ]] -------
 
-local ESPTab = Library:NewTab("ESP", "ESP")
-local VisualsTab = Library:NewTab("Visuals", "Visuals")
-local ClientTab = Library:NewTab("Client", "Client")
-local SupplyDropTab = Library:NewTab("Supply Drops", "Supply_Drops")
-local ToolsTab = Library:NewTab("Tools", "Tools")
-local TPTab = Library:NewTab("TP", "TP")
-local SettingsTab = Library:NewTab("Settings", "Settings")
+local ESPTab = Library:NewTab("追踪", "ESP")
+local VisualsTab = Library:NewTab("视觉", "Visuals")
+local ClientTab = Library:NewTab("客户端", "Client")
+local SupplyDropTab = Library:NewTab("供应落差", "Supply_Drops")
+local ToolsTab = Library:NewTab("工具", "Tools")
+local TPTab = Library:NewTab("传送", "TP")
+local SettingsTab = Library:NewTab("设置", "Settings")
 
 local isRakeESPSetup = false
 ESPTab:NewToggle("Rake ESP", "Rake_ESP", loadData.rakeESP, function(newValue)
@@ -1394,151 +1394,151 @@ VisualsTab:NewToggle("总是黑夜", "Always_Night", loadData.alwaysNight, funct
 	Toggles.alwaysNight = newValue
 
 	if newValue == true then
-		if isAlwaysNightSetup == false then 
-			setupAlwaysNightLoop()
-			isAlwaysNightSetup = true 
-		end
-	end
+如果isAlwaysNightSetup==false，则
+setupAlwaysNightLoop()
+isAlwaysNightSetup=true
+结束
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-VisualsTab:NewToggle("航点", "Waypoints", loadData.waypoints, function(newValue)
-	Toggles.waypoints = newValue
+VisualsTab:NewToggle("航点"，"航点“”，loadData.waypoints，函数(newValue)
+Toggles.waypoints=newValue
 
-	if newValue == true then 
-		createWaypoints()
-	else 
-		destroyWaypoints()
-	end
+如果newValue==true，则
+createWaypoints()
+其他
+destroyWaypoints()
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-local isRakeInfoSetup = false
-VisualsTab:NewToggle("显示rake信息", "Show_Rake_Info", loadData.showRakeInfo, function(newValue)
-	Toggles.showRakeInfo = newValue
+本地isRakeInfoSetup=false
+VisualsTab:NewToggle("显示rake信息"，"show_Rake_Info”，loadData.showRakeInfo，函数(newValue)
+Toggles.showRakeInfo=newValue
 
-	if newValue == true then 
-		local rake = workspace:FindFirstChild("Rake")
+如果newValue==true，则
+local rake=workspace:FindFirstChild("Rake")
 
-		if rake then 
-			addToRakeInfo(rake)
-		end
+如果耙那么
+addToRakeInfo(rake)
+结束
 
-		if isRakeESPSetup == false then 
-			setupRakeDetection()
-			isRakeESPSetup = true
-		end
+如果isRakeESPSetup==false，则
+setupRakeDetection()
+isRakeESPSetup=true
+结束
 
-		if isRakeInfoSetup == false then 
-			setupRakeInfoLoop()
-			isRakeInfoSetup = true
-		end
-	else 
-		destroyRakeInfo()
-	end
+如果isRakeInfoSetup==false，则
+setupRakeInfoLoop()
+isRakeInfoSetup=true
+结束
+其他
+destroyRakeInfo()
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-local isThirdPersonSetup = false
-VisualsTab:NewToggle("解锁第三人称", "Unlock_Third_Person", loadData.unlockThirdPerson, function(newValue)
-	Toggles.unlockThirdPerson = newValue
+本地isThirdPersonSetup=false
+VisualsTab:NewToggle("解锁第三人称"，"unlock_Third_Person"，loadData.unlockThirdPerson，函数(newValue)
+Toggles.unlockThirdPerson=newValue
 
-	if newValue == true then 
-		if isThirdPersonSetup == false then 
-			setupThirdPersonLoop()
-			isThirdPersonSetup = true
-		end
-	end
+如果newValue==true，则
+如果isThirdPersonSetup==false，则
+setupThirdPersonLoop()
+isThirdPersonSetup=true
+结束
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-ClientTab:NewToggle("无限的耐力", "Infinite_Stamina", loadData.infiniteStamina, function(newValue)
-	Toggles.infiniteStamina = newValue    
+ClientTab:NewToggle("无限的耐力"，"infinite_Stamina"，loadData.infiniteStamina，函数(newValue)
+Toggles.infiniteStamina=newValue
 
-	if newValue == true then 
-		hookInfiniteStamina()
-	end
+如果newValue==true，则
+hookInfiniteStamina()
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-ClientTab:NewToggle("无坠落伤害", "No_Fall_Damage", loadData.noFallDamage, function(newValue)
-	Toggles.noFallDamage = newValue
+ClientTab:NewToggle("无坠落伤害"，"no_Fall_Damage”，loadData.noFallDamage，函数(newValue)
+Toggles.noFallDamage=newValue
 
-	if newValue == true then 
-		hookNoFallDamage()
-	end
+如果newValue==true，则
+hookNoFallDamage()
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-local isViewCamerasSetup = false
-ClientTab:NewToggle("查看摄像机", "View_Cameras", loadData.viewCameras, function(newValue)
-	Toggles.viewCameras = newValue
+本地isViewCamerasSetup=false
+ClientTab:NewToggle("查看摄像机"，"view_Cameras"，loadData.viewCameras，函数(newValue)
+Toggles.viewCameras=newValue
 
-	if newValue == true then 
-		Library:CreateNotification("Notice!", "Use Q and E to switch between cameras!", 5)
+如果newValue==true，则
+库：CreateNotification(“Notice！”)，“使用Q和E在摄像机之间切换！"，5)
 
-		if isViewCamerasSetup == false then 
-			setupViewCameraLoop()
-			isViewCamerasSetup = true
-		end
-	end
+如果isViewCamerasSetup==false，则
+setupViewCameraLoop()
+isViewCamerasSetup=true
+结束
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-local isTimerSetup = false
-ClientTab:NewToggle("定时器", "Timer", loadData.timer, function(newValue)
-	Toggles.timer = newValue
+本地isTimerSetup=false
+ClientTab:NewToggle("定时器"，"timer“”，loadData.timer，函数(newValue)
+Toggles.timer=newValue
 
-	if newValue == true then 
-		if currentTimeUI == nil then 
-			createTheTimer()
-			currentTimeUI.Visible = true
-		end
+如果newValue==true，则
+如果currentTimeUI==nil，则
+createTheTimer()
+currentTimeUI.Visible=true
+结束
 
-		if isTimerSetup == false then 
-			setupTimerLoop()
-			isTimerSetup = true
-		end
-	else 
-		currentTimeUI:Destroy()
-		currentTimeUI = nil
-	end
+如果isTimerSetup==false，则
+setupTimerLoop()
+isTimerSetup=true
+结束
+其他
+currentTimeUI:Destroy()
+currentTimeUI=nil
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-local isPowerLevelSetup = false
-ClientTab:NewToggle("功率等级（在左下角）", "Power_Level", loadData.powerLevel, function(newValue)
-	Toggles.powerLevel = newValue
+本地isPowerLevelSetup=false
+ClientTab:NewToggle("功率等级（在左下角）"，"power_Level”，loadData.powerLevel，函数(newValue)
+Toggles.powerLevel=newValue
 
-	if newValue == true then 
-		--if PowerLevelUI == nil then 
-		createPowerLevel()
-		PowerLevelUI.Visible = true
-		--end
+如果newValue==true，则
+--如果PowerLevelUI==nil，则
+createPowerLevel()
+PowerLevelUI.Visible=true
+--end
 
-		if isPowerLevelSetup == false then 
-			setupPowerLevelLoop()
-			isPowerLevelSetup = true
-		end
-	else 
-		destroyPowerLevel()
-	end
+如果isPowerLevelSetup==false，则
+setupPowerLevelLoop()
+isPowerLevelSetup=true
+结束
+其他
+destroyPowerLevel()
+结束
 
-	updateSettings()
-end)
+updateSettings()
+结束)
 
-ClientTab:NewButton("Disable Map Borders", "Disable_Map_Borders", destroyMapBorders)
+ClientTab:NewButton("禁用地图边框"，"disable_Map_Borders”，destroyMapBorders)
 
-local isSprintSetup = false
-ClientTab:NewKeybind("Sprint without Stamina", "Sprint_without_Stamina", Enum.KeyCode.Q, function()
+本地isSprintSetup=false
+ClientTab:NewKeybind("冲刺无耐力（按 Q键", "Sprint_without_Stamina", Enum.KeyCode.Q, function()
 	Toggles.sprint = not Toggles.sprint
 
 	if isSprintSetup == false then 
@@ -1557,7 +1557,7 @@ SupplyDropTab:NewToggle("旁路电源压降锁定", "Bypass_Supply_Drop_Lock", l
 	updateSettings()
 end)
 
-SupplyDropTab:NewButton("View Supply Drop Items", "View_Supply_Drop_Items", function()
+SupplyDropTab:NewButton("查看供应直接物料", "View_Supply_Drop_Items", function()
 	local SupplyCratesFolder = workspace.Debris.SupplyCrates
 
 	if SupplyCratesFolder:FindFirstChild("Box") then 
@@ -1643,10 +1643,10 @@ ToolsTab:NewToggle("手电筒修改器", "Flashlight_Modifier", loadData.flashli
 	updateSettings()
 end)
 
-TPTab:NewButton("Collect Scraps", "Collect_Scraps", collectScraps)
-TPTab:NewButton("Collect Flare Gun", "Collect_Flare_Gun", collectFlareGun)
+TPTab:NewButton("收集废料", "Collect_Scraps", collectScraps)
+TPTab:NewButton("收集信号枪", "Collect_Flare_Gun", collectFlareGun)
 
-SettingsTab:NewKeybind("Toggle UI", "Toggle_UI", Enum.KeyCode.RightControl, function()
+SettingsTab:NewKeybind("开/关UI按左ctrl", "Toggle_UI", Enum.KeyCode.RightControl, function()
 	Library:ToggleUI()
 end)
 
@@ -1668,4 +1668,4 @@ setupDeathDetection()
 enableNoJumpDelay()
 
 Library:ViewTab("ESP")
-Library:CreateNotification("Script Loaded!", "CHEATER.FUN - Free Roblox Scripts", 5)
+库：CreateNotification("已加载脚本！"，"作弊者.有趣-免费Roblox脚本"，5)

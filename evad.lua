@@ -102,8 +102,8 @@
 
 		function SpamChat()
 			while autochat == true do
-				local ohString1 = "Tbao Hub On Top"
-				local ohString2 = "All"
+				local ohString1 = ""
+				local ohString2 = ""
 				game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(ohString1, ohString2)
 				wait(1)
 			end
@@ -111,7 +111,7 @@
 
 		function autowistlefunction()
 			while autowistle == true do
-				local ohString1 = "Whistle"
+				local ohString1 = "吹口哨"
 				local ohBoolean2 = true
 				game:GetService("Players").LocalPlayer.PlayerScripts.Events.KeybindUsed:Fire(ohString1, ohBoolean2)
 				game:GetService("ReplicatedStorage").Events.Whistle:FireServer()
@@ -139,7 +139,7 @@
 
 		function freemoney()
 			while money == true do
-				local ohString1 = "Free money <font color=\"rgb(100,255,100)\">($99999)</font>"
+				local ohString1 = "免费金钱"rgb(100,255,100)\">($99999999)</font>"
 				game:GetService("Players").LocalPlayer.PlayerGui.HUD.Messages.Use:Fire(ohString1)
 				wait(5)
 			end
@@ -150,8 +150,8 @@
 
 		function RandomEmote()
 			OrionLib:MakeNotification({
-				Name = "Random Emoting...",
-				Content = "You pressed the Random Emote keybind",
+				Name = "随机表情处理...",
+				Content = "您按下了随机表情键结",
 				Image = "rbxassetid://4483345998",
 				Time = 5
 			})
@@ -159,13 +159,13 @@
 		--tabs
 
 		local MainTab= Window:MakeTab({
-			Name = "Main features",
+			Name = "主要特点",
 			Icon = "rbxassetid://4483345998",
 			PremiumOnly = false
 		})
 
 		local MiscTab= Window:MakeTab({
-			Name = "Extra",
+			Name = "额外的",
 			Icon = "rbxassetid://4483345998",
 			PremiumOnly = false
 		})
@@ -177,25 +177,25 @@
 		})
 
 		local TeleportTab= Window:MakeTab({
-			Name = "Teleport",
+			Name = "传送",
 			Icon = "rbxassetid://4483345998",
 			PremiumOnly = false
 		})
 
 		local FunTab= Window:MakeTab({
-			Name = "Fun",
+			Name = "乐趣",
 			Icon = "rbxassetid://4483345998",
 			PremiumOnly = false
 		})
 
 		local CreditsTab = Window:MakeTab({
-			Name = "Credits",
+			Name = "制作组",
 			Icon = "rbxassetid://4483345998",
 			PremiumOnly = true
 		})
 
 		local MiscTab3 = MainTab:AddSection({
-			Name = "Auto Farms"
+			Name = "自动农场"
 		})
 
 		MainTab:AddToggle({
@@ -216,7 +216,7 @@
 
 		--sliders
 		local MainTab3 = MainTab:AddSection({
-			Name = "Sliders"
+			Name = "滑块"
 		})
 
 		local Misctab5 = MiscTab:AddSection({
@@ -231,7 +231,7 @@
 			Default = 0,
 			Color = Color3.fromRGB(128, 128, 128),
 			Increment = 1,
-			ValueName = "Walk Speed",
+			ValueName = "步行速度",
 			Callback = function(Value)
 				TargetWalkspeed = Value
 			end   
@@ -272,7 +272,7 @@
 			Default = 3,
 			Color = Color3.fromRGB(128, 128, 128),
 			Increment = 1,
-			ValueName = "Jump",
+			ValueName = "跳越",
 			Callback = function(Value)
 				Settings.Jump = Value
 			end
@@ -285,7 +285,7 @@
 			Default = 14,
 			Color = Color3.fromRGB(128, 128, 128),
 			Increment = 0.1,
-			ValueName = "Time",
+			ValueName = "时间",
 			Callback = function(Time)
 				game.Lighting.ClockTime = Time
 			end
@@ -294,11 +294,11 @@
 		--toggles
 
 		local FunTab2 = FunTab:AddSection({
-			Name = "Toggles"
+			Name = "工具"
 		})
 
 		local MiscTab3 = MainTab:AddSection({
-			Name = "Toggles"
+			Name = "工具"
 		})
 
 		MainTab:AddToggle({
@@ -356,11 +356,11 @@
 
 		--buttons
 		local FunTab3 = FunTab:AddSection({
-			Name = "Buttons"
+			Name = "功能"
 		})
 
 		local MiscTab2 = MiscTab:AddSection({
-			Name = "Buttons"
+			Name = "功能"
 		})
 
 		MiscTab:AddButton({

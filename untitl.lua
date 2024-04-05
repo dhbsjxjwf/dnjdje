@@ -5,7 +5,7 @@ local hum = char:FindFirstChildOfClass("Humanoid") or char:WaitForChild("Humanoi
 
 if not fireproximityprompt then
     local msg = Instance.new("Message",workspace)
-    msg.Text = "you have fireproximityprompt function bro get better executor"
+    msg.Text = "你有fire proximity prompt函数bro获得更好的执行程序"
     task.wait(6)
     msg:Destroy()
     error("no prox") 
@@ -122,18 +122,18 @@ end
 
 local flags = {
     speed = 0,
-    espdoors = true,
-    espkeys = true,
-    espitems = true,
-    espbooks = true,
-    esprush = true,
-    espchest = true,
-    esplocker = true,
-    esphumans = true,
-    espgold = true,
+    espdoors = false,
+    espkeys = false,
+    espitems = false,
+    espbooks = false,
+    esprush = false,
+    espchest = false,
+    esplocker = false,
+    esphumans = false,
+    espgold = false,
     goldespvalue = 0,
     hintrush = false,
-    light = true,
+    light = false,
     instapp = false,
     noseek = false,
     nogates = false,
@@ -150,9 +150,9 @@ local flags = {
 local DELFLAGS = {table.unpack(flags)}
 local esptable = {doors={},keys={},items={},books={},entity={},chests={},lockers={},people={},gold={}}
 
-local window_player = library.window("player")
+local window_player = library.window("玩家")
 local window_esp = library.window("esp")
-local window_misc = library.window("misc")
+local window_misc = library.window("混杂的")
 
 window_player.toggle("客户端发光",false,function(val)
     flags.light = val
@@ -195,7 +195,7 @@ task.spawn(function()
     end
 end)
 
-window_esp.toggle("门esp",false,function(val)
+window_esp.toggle("door esp",false,function(val)
     flags.espdoors = val
     
     if val then
@@ -293,7 +293,7 @@ window_esp.toggle("钥匙/拉杆esp",false,function(val)
     end
 end)
 
-window_esp.toggle("道具esp",false,function(val)
+window_esp.toggle("物品esp",false,function(val)
     flags.espitems = val
     
     if val then
@@ -347,7 +347,7 @@ window_esp.toggle("道具esp",false,function(val)
     end
 end)
 
-window_esp.toggle("书/断路器 esp",false,function(val)
+window_esp.toggle("书/匣esp",false,function(val)
     flags.espbooks = val
     
     if val then
@@ -355,7 +355,7 @@ window_esp.toggle("书/断路器 esp",false,function(val)
             if v:IsA("Model") and (v.Name == "LiveHintBook" or v.Name == "LiveBreakerPolePickup") then
                 task.wait(0.1)
                 
-                local h = esp(v,Color3.fromRGB(160,190,255),v.PrimaryPart,"书")
+                local h = esp(v,Color3.fromRGB(160,190,255),v.PrimaryPart,"Book")
                 table.insert(esptable.books,h)
                 
                 v.AncestryChanged:Connect(function()
@@ -396,7 +396,7 @@ window_esp.toggle("书/断路器 esp",false,function(val)
     end
 end)
 
-local entitynames = {"RushMoving","AmbushMoving","Snare","A60","A120"}
+local entitynames = {"Rush","Ambush","Snare","A60","A120"}
 
 window_player.label("credits: zoophiliaphobic#6287\noh my dayyzz",20)
 window_esp.toggle("实体esp",false,function(val)
@@ -408,7 +408,7 @@ window_esp.toggle("实体esp",false,function(val)
             if table.find(entitynames,v.Name) then
                 task.wait(0.1)
                 
-                local h = esp(v,Color3.fromRGB(255,25,25),v.PrimaryPart,v.Name:gsub("移动",""))
+                local h = esp(v,Color3.fromRGB(255,25,25),v.PrimaryPart,v.Name:gsub("Moving",""))
                 table.insert(esptable.entity,h)
             end
         end)
@@ -431,7 +431,7 @@ window_esp.toggle("实体esp",false,function(val)
                     if v:IsA("Model") and table.find(entitynames,v.Name) then
                         task.wait(0.1)
                         
-                        local h = esp(v:WaitForChild("Base"),Color3.fromRGB(255,25,25),v.Base,"陷阱")
+                        local h = esp(v:WaitForChild("Base"),Color3.fromRGB(255,25,25),v.Base,"Snare")
                         table.insert(esptable.entity,h)
                     end
                 end
@@ -473,7 +473,7 @@ window_esp.toggle("储物柜esp",false,function(val)
             if v:IsA("Model") then
                 task.wait(0.1)
                 if v.Name == "Wardrobe" then
-                    local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"柜子")
+                    local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"储物柜")
                     table.insert(esptable.lockers,h) 
                 elseif (v.Name == "Rooms_Locker" or v.Name == "Rooms_Locker_Fridge") then
                     local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"储物柜")
@@ -532,7 +532,7 @@ window_esp.toggle("箱子esp",false,function(val)
                     local h = esp(v,Color3.fromRGB(205,120,255),v.PrimaryPart,"箱子")
                     table.insert(esptable.chests,h) 
                 elseif v.Name == "ChestBoxLocked" then
-                    local h = esp(v,Color3.fromRGB(255,120,205),v.PrimaryPart,"锁住的箱子")
+                    local h = esp(v,Color3.fromRGB(255,120,205),v.PrimaryPart,"上锁的箱子")
                     table.insert(esptable.chests,h) 
                 end
             end
@@ -621,7 +621,7 @@ window_esp.toggle("玩家esp",false,function(val)
     end
 end)
 
-window_esp.toggle("金钱esp",false,function(val)
+window_esp.toggle("金币esp",false,function(val)
     flags.espgold = val
     
     if val then
@@ -680,7 +680,7 @@ window_esp.slider("最低金值",5,150,5,25,function(val)
     flags.goldespvalue = val
 end)
 
-window_misc.toggle("通知实体 entities",false,function(val)
+window_misc.toggle("通知实体",false,function(val)
     flags.hintrush = val
     
     if val then
@@ -690,7 +690,7 @@ window_misc.toggle("通知实体 entities",false,function(val)
                 repeat task.wait() until plr:DistanceFromCharacter(v:GetPivot().Position) < 1000 or not v:IsDescendantOf(workspace)
                 
                 if v:IsDescendantOf(workspace) then
-                    message(v.Name:gsub("Moving",""):lower().." is coming go hide")
+                    message(v.Name:gsub("Moving",""):lower().." 要来了躲起来")
                 end
             end
         end) 
@@ -700,7 +700,7 @@ window_misc.toggle("通知实体 entities",false,function(val)
     end
 end)
 
-window_misc.toggle("禁止seek追逐战",false,function(val)
+window_misc.toggle("删除seek",false,function(val)
     flags.noseek = val
     
     if val then
@@ -718,7 +718,7 @@ window_misc.toggle("禁止seek追逐战",false,function(val)
     end
 end)
 
-window_misc.toggle("删除门",false,function(val)
+window_misc.toggle("删除匣门",false,function(val)
     flags.nogates = val
     
     if val then
@@ -740,7 +740,7 @@ window_misc.toggle("删除门",false,function(val)
     end
 end)
 
-window_misc.toggle("删除拼图门",false,function(val)
+window_misc.toggle("delete puzzle door",false,function(val)
     flags.nopuzzle = val
     
     if val then
@@ -766,7 +766,7 @@ end)
 local screechremote = entityinfo:FindFirstChild("Screech")
 
 if screechremote then
-    window_misc.toggle("无害的尖叫声",false,function(val)
+    window_misc.toggle("无害的screech",false,function(val)
         flags.noscreech = val
         
         if val then
@@ -830,9 +830,9 @@ window_misc.toggle("自动图书馆密码",false,function(val)
                 local code = table.concat(deciphercode())
                 
                 if code:find("_") then
-                    message("get all hints first")
+                    message("先获取所有提示")
                 else
-                    message("the code is ".. code)
+                    message("密码是 ".. code)
                 end
             end
         end)
@@ -842,7 +842,7 @@ window_misc.toggle("自动图书馆密码",false,function(val)
     end
 end)
 
-window_misc.toggle("A-000没有锁",false,function(val)
+window_misc.toggle("A-000门无锁",false,function(val)
     flags.roomsnolock = val
     
     if val then
@@ -969,7 +969,7 @@ end)
 
 window_misc.label("bypass anticheat使不能采取任何东西，所以这只是在多人游戏或在房间区域这样做",32)
 
-window_misc.button("旁路防欺骗",function()
+window_misc.button("绕过防作弊",function()
     local newhum = hum:Clone()
     newhum.Name = "humlol"
     newhum.Parent = char
@@ -981,11 +981,11 @@ window_misc.button("旁路防欺骗",function()
 end)
 
 if game.ReplicatedStorage:WaitForChild("GameData"):WaitForChild("Floor").Value == "Rooms" then
-    local window_rooms = library.window("the rooms")
+    local window_rooms = library.window("房间")
     
     local a90remote = game.ReplicatedStorage:WaitForChild("EntityInfo"):WaitForChild("A90")
     
-    window_rooms.toggle("无害的A90",false,function(val)
+    window_rooms.toggle("无害的A-90",false,function(val)
         flags.noa90 = val
         
         if val  then
@@ -1004,7 +1004,7 @@ if game.ReplicatedStorage:WaitForChild("GameData"):WaitForChild("Floor").Value =
         end
     end)
     
-    window_rooms.toggle("自动a-1000",false,function(val)
+    window_rooms.toggle("自动A-1000",false,function(val)
         flags.autorooms = val
         
         if val then
@@ -1053,7 +1053,7 @@ if game.ReplicatedStorage:WaitForChild("GameData"):WaitForChild("Floor").Value =
     end)
 end
 
-window_misc.button("关闭 gui",function()
+window_misc.button("关闭gui",function()
     flags = DELFLAGS
     
     task.wait()

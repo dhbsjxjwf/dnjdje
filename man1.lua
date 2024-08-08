@@ -3,56 +3,6 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "XWW hub", HidePremium = false, SaveConfig = true,IntroText = "XWW hub，启动！", ConfigFolder = "XWW hub"})
 
 local Tab = Window:MakeTab({
-	Name = "关于",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-Tab:AddButton({
-	Name = "很多脚本都是我汉化的只有2 个不是我汉化的，还有的脚本是加密的我汉化不了",
-	Callback = function()
-      		print("button pressed")
-  	end    
-})
-
-Tab:AddButton({
-	Name = "另外脚本是免费的",
-	Callback = function()
-      		print("button pressed")
-  	end    
-})
-
-Tab:AddButton({
-	Name = "bf我就用数字代替了😁",
-	Callback = function()
-      		print("button pressed")
-  	end    
-})
-
-Tab:AddButton({
-	Name = "A：为什么有的脚本这么少有的这么多? Q:因为这个游戏脚本少或者不想搞比如说doors",
-	Callback = function()
-      		print("button pressed")
-  	end    
-})
-
-Tab:AddButton({
-	Name = "A:为什么你的脚本怎么👎     Q因为才0.1版本你搞什么条件🤔",
-	Callback = function()
-      		print("button pressed")
-
-  	end    
-})
-
-Tab:AddButton({
-	Name = "每周末更新",
-	Callback = function()
-      		print("button pressed")
-
-  	end    
-})
-
-local Tab = Window:MakeTab({
 	Name = "doors",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
